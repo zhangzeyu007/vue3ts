@@ -3,7 +3,7 @@
  * @Author: 张泽雨
  * @Date: 2024-03-30 14:18:27
  * @LastEditors: 张泽雨
- * @LastEditTime: 2024-04-06 14:39:03
+ * @LastEditTime: 2024-04-06 14:51:09
  * @FilePath: \vue3ts\src\views\category\index.vue
 -->
 <template>
@@ -63,7 +63,7 @@ onScopeDispose(() => {
   console.log('onScopeDispose')
 })
 const online = useOnline()
-const currentTime = useDate('2024-03-30 14:18:27')
+const currentTime = useDate('', { format: 'YYYY-MM-DD', method: 'hour', methodParam: 3 })
 console.log(currentTime.data.value, '当前时间')
 console.log(online.online.value, '网络状态')
 </script>
