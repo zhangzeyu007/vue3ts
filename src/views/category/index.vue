@@ -3,7 +3,7 @@
  * @Author: 张泽雨
  * @Date: 2024-03-30 14:18:27
  * @LastEditors: 张泽雨
- * @LastEditTime: 2024-04-03 19:07:05
+ * @LastEditTime: 2024-04-06 14:39:03
  * @FilePath: \vue3ts\src\views\category\index.vue
 -->
 <template>
@@ -35,6 +35,7 @@ import {
   toRaw
 } from 'vue'
 import { useOnline } from '@/hooks/useOnline'
+import useDate from '@/hooks/useDate/index'
 
 let reactive1 = reactive({ a: 1, b: 2, c: 6 })
 const objRef = ref({ a: 1, b: 2, c: 6 })
@@ -62,5 +63,7 @@ onScopeDispose(() => {
   console.log('onScopeDispose')
 })
 const online = useOnline()
+const currentTime = useDate('2024-03-30 14:18:27')
+console.log(currentTime.data.value, '当前时间')
 console.log(online.online.value, '网络状态')
 </script>
