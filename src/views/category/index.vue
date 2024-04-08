@@ -3,12 +3,13 @@
  * @Author: 张泽雨
  * @Date: 2024-03-30 14:18:27
  * @LastEditors: 张泽雨
- * @LastEditTime: 2024-04-06 14:51:09
+ * @LastEditTime: 2024-04-07 22:43:22
  * @FilePath: \vue3ts\src\views\category\index.vue
 -->
 <template>
   <div>购物组件页</div>
   <MyCat :message="1" />
+  <AsyncComp></AsyncComp>
 </template>
 
 <script setup lang="ts">
@@ -32,6 +33,7 @@ import {
   effectScope,
   onScopeDispose,
   getCurrentScope,
+  defineAsyncComponent,
   toRaw
 } from 'vue'
 import { useOnline } from '@/hooks/useOnline'
@@ -66,4 +68,10 @@ const online = useOnline()
 const currentTime = useDate('', { format: 'YYYY-MM-DD', method: 'hour', methodParam: 3 })
 console.log(currentTime.data.value, '当前时间')
 console.log(online.online.value, '网络状态')
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./asyncCom.vue'),
+  delay: 3000,
+  timeout: 3000
+})
 </script>
