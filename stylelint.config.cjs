@@ -3,7 +3,7 @@
  * @Author: 张泽雨
  * @Date: 2024-03-12 13:01:52
  * @LastEditors: 张泽雨
- * @LastEditTime: 2024-04-03 11:42:35
+ * @LastEditTime: 2024-04-08 18:40:52
  * @FilePath: \vue3ts\stylelint.config.cjs
  */
 'use strict'
@@ -19,12 +19,15 @@ module.exports = {
   ],
   overrides: [
     // 扫描 .vue/html 文件中的 <style> 标签内的样式
-    // {
-    //   files: ["**/*.{vue,html}"],
-    //   customSyntax: "postcss-html"
-    // }
+    {
+      files: ['**/*.{vue,html}'],
+      customSyntaxRules: {
+        'stylelint-disable-next-line': true
+      }
+    }
   ],
   rules: {
+    'stylelint-babel/no-unknown-word': true,
     // "function-url-quotes": "always", // URL 的引号 "always(必须加上引号)"|"never(没有引号)"
     // "string-quotes": "double", // 指定字符串使用单引号或双引号 "single(单引号)"|"double(双引号)"
     // "unit-case": "lower", // 指定单位的大小写 "lower(全小写)"|"upper(全大写)"
@@ -40,12 +43,12 @@ module.exports = {
     // "value-no-vendor-prefix": null, // 关闭 vendor-prefix (为了解决多行省略 -webkit-box)
     // "no-descending-specificity": null, // 不允许较低特异性的选择器出现在覆盖较高特异性的选择器
     // "value-keyword-case": null, // 解决在 scss 中使用 v-bind 大写单词报错
-    // "selector-pseudo-class-no-unknown": [
-    //   true,
-    //   {
-    //     ignorePseudoClasses: ["global", "v-deep", "deep"]
-    //   }
-    // ]
+    'selector-pseudo-class-no-unknown': [
+      true,
+      {
+        ignorePseudoClasses: ['global', 'v-deep', 'deep']
+      }
+    ]
   },
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts']
 }
